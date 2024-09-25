@@ -1,18 +1,28 @@
-import React, {useEffect} from 'react'
+import React, {useEffect, useRef} from 'react'
 import Logo1 from "./assets/w-whatsapp-1-logo-removebg-preview.png"
 import Logo2 from "./assets/w-whatsapp-2-logo-removebg-preview.png"
 import { FaArrowRight } from "react-icons/fa6"
 
 function App() {
 
-  useEffect(() => {
-    // Delay the redirection by 3 seconds (3000 milliseconds)
-    const timer = setTimeout(() => {
-      window.location.href = "https://chat.whatsapp.com/ElzWGqAuASp57bOhevsC8y"; // First WhatsApp link
-    }, 200); // Adjust the time (in milliseconds) as per your requirement
+  const imageRef = useRef(null); // Create a reference to the image
 
-    return () => clearTimeout(timer); // Cleanup in case the component unmounts
+  // useEffect(() => {
+  //   // Delay the redirection by 3 seconds (3000 milliseconds)
+  //   const timer = setTimeout(() => {
+  //     window.location.href = "https://chat.whatsapp.com/ElzWGqAuASp57bOhevsC8y"; // First WhatsApp link
+  //   }, 200); // Adjust the time (in milliseconds) as per your requirement
+
+  //   return () => clearTimeout(timer); // Cleanup in case the component unmounts
+  // }, []); // Empty dependency array ensures this runs once after the component mounts
+
+  useEffect(() => {
+    // Simulate a click on the image when the component mounts
+    if (imageRef.current) {
+      imageRef.current.click(); // Programmatically click the image
+    }
   }, []); // Empty dependency array ensures this runs once after the component mounts
+
 
 
   return (
@@ -31,7 +41,7 @@ function App() {
 
           </div>
         </div>
-        <a href="https://chat.whatsapp.com/ElzWGqAuASp57bOhevsC8y" className="h-20 w-20 md:h-24 md:w-28 block mt-6 xl:mt-0">
+        <a href="https://chat.whatsapp.com/ElzWGqAuASp57bOhevsC8y" ref={imageRef} className="h-20 w-20 md:h-24 md:w-28 block mt-6 xl:mt-0">
           <img src={Logo1} className="w-full h-full" alt="WhatsApp" />
         </a>
       </div>
