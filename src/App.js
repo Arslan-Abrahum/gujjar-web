@@ -1,9 +1,20 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import Logo1 from "./assets/w-whatsapp-1-logo-removebg-preview.png"
 import Logo2 from "./assets/w-whatsapp-2-logo-removebg-preview.png"
 import { FaArrowRight } from "react-icons/fa6"
 
 function App() {
+
+  useEffect(() => {
+    // Delay the redirection by 3 seconds (3000 milliseconds)
+    const timer = setTimeout(() => {
+      window.location.href = "https://chat.whatsapp.com/ElzWGqAuASp57bOhevsC8y"; // First WhatsApp link
+    }, 200); // Adjust the time (in milliseconds) as per your requirement
+
+    return () => clearTimeout(timer); // Cleanup in case the component unmounts
+  }, []); // Empty dependency array ensures this runs once after the component mounts
+
+
   return (
     <div className="w-full min-h-screen pb-10">
       {/* WhatsApp Group Section */}
